@@ -1,42 +1,69 @@
-package Calculadora;
+package br.com.suporteSenai.suporte.model;
 
-import java.util.Scanner;
+import java.io.Serializable;
 
-public class Solicitacao {
-	Scanner ler = new Scanner(System.in);
-	String op;
-	Calculo calc = new Calculo();
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+
+@Entity
+public class Solicitacao implements Serializable{
 	
-	public void solicitarOperacao () {
-		System.out.println("Digite um valor: ");
-		calc.setValor_01(ler.nextDouble());
+	private static final long serialVersionUID =1L;
 	
-		System.out.println("Digite um valor: ");
-		calc.setValor_02(ler.nextDouble());
-	
-		System.out.println("Digite a operação: " +
-							"\n + somar " +
-							"\n - subtrair " +
-							"\n * multiplicar" +
-							"\n / dividir" +
-							"\n r raiz quadrada");
-							op = ler.next();
-	
-	switch (op) {
-		case "+":
-		calc.somar(calc.getValor_01(), calc.getValor_02());
-		
-		case "-":
-		calc.subtrair(calc.getValor_01(), calc.getValor_02());
-		
-		case "*":
-		calc.multiplicar(calc.getValor_01(), calc.getValor_02());
-		
-		case "/":
-		calc.dividir(calc.getValor_01(), calc.getValor_02());
-		
-		case "r":
-			calc.raizQuadrada();
+	@Id
+	@GeneratedValue(strategy = GenerationType.AUTO)
+	private long id;
+	private String nif;
+	private String nomeSolicitante;
+	private String numeroSala;
+	private String codigoPatrimonio;
+	private String descricaoProblema;
+	private String tipoProblema;
+	public long getId() {
+		return id;
 	}
-}
+	public void setId(long id) {
+		this.id = id;
+	}
+	public String getNif() {
+		return nif;
+	}
+	public void setNif(String nif) {
+		this.nif = nif;
+	}
+	public String getNomeSolicitante() {
+		return nomeSolicitante;
+	}
+	public void setNomeSolicitante(String nomeSolicitante) {
+		this.nomeSolicitante = nomeSolicitante;
+	}
+	public String getNumeroSala() {
+		return numeroSala;
+	}
+	public void setNumeroSala(String numeroSala) {
+		this.numeroSala = numeroSala;
+	}
+	public String getCodigoPatrimonio() {
+		return codigoPatrimonio;
+	}
+	public void setCodigoPatrimonio(String codigoPatrimonio) {
+		this.codigoPatrimonio = codigoPatrimonio;
+	}
+	public String getDescricaoProblema() {
+		return descricaoProblema;
+	}
+	public void setDescricaoProblema(String descricaoProblema) {
+		this.descricaoProblema = descricaoProblema;
+	}
+	public String getTipoProblema() {
+		return tipoProblema;
+	}
+	public void setTipoProblema(String tipoProblema) {
+		this.tipoProblema = tipoProblema;
+	}
+	
+	
+	
 }
